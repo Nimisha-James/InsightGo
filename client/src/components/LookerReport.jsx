@@ -1,4 +1,5 @@
 import React from 'react';
+import SalesChatbot from './SalesChatbot';
 import '../styles/Visualization.css';
 
 /**
@@ -16,31 +17,38 @@ import '../styles/Visualization.css';
 const LookerReport = ({ title, subtitle, embedUrl }) => {
   return (
     <div className="viz-page">
-      <div className="viz-frame-card">
-        {embedUrl ? (
-          <iframe src={embedUrl} title={title} allowFullScreen />
-        ) : (
-          <div className="viz-placeholder">
-            <svg
-              className="viz-placeholder-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <rect x="3" y="4" width="18" height="14" rx="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M7 15l3-4 2.5 2.5L17 9" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M3 20h18" strokeLinecap="round" />
-            </svg>
-            <h3>Looker Studio report not connected yet</h3>
-            <p>
-              This page will embed a live Looker Studio report once one is
-              built and shared. Set <code>VITE_LOOKER_STUDIO_CURRENT_REPORT_URL</code> in{' '}
-              <code>client/.env</code> to switch this on.
-            </p>
-          </div>
-        )}
+      <div className="viz-content">
+        <div className="viz-frame-card">
+          {embedUrl ? (
+            <iframe src={embedUrl} title={title} allowFullScreen />
+          ) : (
+            <div className="viz-placeholder">
+              <svg
+                className="viz-placeholder-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <rect x="3" y="4" width="18" height="14" rx="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M7 15l3-4 2.5 2.5L17 9" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M3 20h18" strokeLinecap="round" />
+              </svg>
+              <h3>Looker Studio report not connected yet</h3>
+              <p>
+                This page will embed a live Looker Studio report once one is
+                built and shared. Set <code>VITE_LOOKER_STUDIO_CURRENT_REPORT_URL</code> in{' '}
+                <code>client/.env</code> to switch this on.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Answers questions about the same sales data the report above is
+            built from — see SalesChatbot.jsx for why this talks to MongoDB
+            via Gemini function-calling rather than the report itself. */}
+        <SalesChatbot />
       </div>
     </div>
   );

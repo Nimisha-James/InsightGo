@@ -12,6 +12,7 @@ const reviewRoutes = require('./routes/formRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const churnRoutes = require('./routes/churnRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 
 /* Load environment variables from .env file */
 dotenv.config();
@@ -49,6 +50,7 @@ app.use('/submit-form', reviewRoutes);
 app.use('/search', searchRoutes);
 app.use('/churn', churnRoutes);
 app.use('/analytics', analyticsRoutes);
+app.use('/chat', chatRoutes);
 
 //Connect to MongoDB
 connect();

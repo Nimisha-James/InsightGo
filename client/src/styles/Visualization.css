@@ -7,9 +7,24 @@
     background: var(--bg-gradient);
 }
 
-.viz-frame-card {
+.viz-content {
     width: 100%;
     max-width: 1600px;
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+}
+
+@media (max-width: 1100px) {
+    .viz-content {
+        flex-direction: column;
+    }
+}
+
+.viz-frame-card {
+    width: 100%;
+    min-width: 0;
     flex: 1;
     min-height: 800px;
     background-color: var(--surface);
