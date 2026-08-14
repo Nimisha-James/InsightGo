@@ -13,9 +13,9 @@
     flex: 1;
     min-height: 800px;
     background-color: var(--surface);
-    border: 3px solid var(--border);
+    border: 1px solid var(--border-soft);
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-hover);
     overflow: hidden;
     display: flex;
 }

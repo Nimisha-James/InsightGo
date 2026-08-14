@@ -18,9 +18,9 @@
   width: 75%;
   max-width: 600px;
   max-height: 85vh;
-  border: 3px solid var(--border-strong);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
   overflow-y: auto;
   background-color: var(--surface-soft);
   padding: 16px;
@@ -31,6 +31,7 @@
   justify-content: center;
   padding: 15px;
   background-color: var(--border-strong);
+  border-radius: var(--radius) var(--radius) 0 0;
   gap: 16px;
 }
 

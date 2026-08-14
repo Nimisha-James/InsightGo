@@ -4,19 +4,19 @@ import logo from '../assets/logo.jpg';
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-brown-950 to-brown-900 text-brown-200 py-10">
+    <footer className="bg-gradient-to-b from-brown-950 to-brown-900 text-brown-200 py-5">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
-          <div className="flex flex-col items-center md:items-start text-sm">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+          <div className="flex items-center gap-2 text-xs">
             <img
               src={logo}
               alt="Business Insights Logo"
-              className="w-20 mb-3"
+              className="w-8 h-8 rounded-full object-cover"
             />
             <p>&copy; {new Date().getFullYear()} InsightGo. All rights reserved.</p>
           </div>
 
-          <div className="space-x-8">
+          <div className="space-x-6 text-sm">
             <Link to="/" className="text-brown-300 hover:text-cream-100 transition-colors duration-300">
               About Us
             </Link>
@@ -28,11 +28,11 @@ function Footer() {
             </Link>
           </div>
 
-          <div className="flex space-x-6">
+          <div className="flex space-x-4">
             <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-400 hover:text-blue-500 transition-colors duration-300"
+                className="h-5 w-5 text-gray-400 hover:text-blue-500 transition-colors duration-300"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -44,7 +44,7 @@ function Footer() {
             <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-400 hover:text-blue-400 transition-colors duration-300"
+                className="h-5 w-5 text-gray-400 hover:text-blue-400 transition-colors duration-300"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -56,7 +56,7 @@ function Footer() {
             <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-400 hover:text-blue-700 transition-colors duration-300"
+                className="h-5 w-5 text-gray-400 hover:text-blue-700 transition-colors duration-300"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -68,7 +68,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-brown-800 pt-6 text-center text-brown-400 text-sm">
+        <div className="mt-3 border-t border-brown-800 pt-2 text-center text-brown-500 text-xs">
           <p>Designed by InsightGo Team</p>
         </div>
       </div>

@@ -3,9 +3,9 @@
   padding: 50px;
   font-family: var(--font-body);
   background-color: var(--surface-soft);
-  border: 2px solid var(--border-soft);
+  border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-hover);
   margin: 80px auto;
   width: 80%;
   max-width: 600px;

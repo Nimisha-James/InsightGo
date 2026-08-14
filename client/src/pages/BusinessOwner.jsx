@@ -49,7 +49,9 @@ const BusinessOwner = () => {
     return (
         <div className="business-owner-container">
             <div className="business-owner-header">
-                <div className="company-name">
+                <div>
+                    <h1 className="company-name">Business Dashboard</h1>
+                    <p className="company-subtitle">Manage your data, feedback, and churn insights</p>
                 </div>
                 <div className="profile-icon">
                     <button onClick={() => setShowProfile(true)} aria-label="Profile">
