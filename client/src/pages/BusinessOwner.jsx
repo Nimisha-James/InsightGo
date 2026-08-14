@@ -92,6 +92,36 @@ const BusinessOwner = () => {
                         <button type="submit">Customer Reviews</button>
                     </div>
                 </Link>
+                <Link to="churn" className="box">
+                    <div className="box-icon-wrapper">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="72"
+                            height="72"
+                            fill="none"
+                            stroke="#b66015"
+                            strokeWidth="1.5"
+                        >
+                            <path
+                                d="M3 3v18h18"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                            <path
+                                d="M7 15l3.5-4.5 3 3L19 6"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                            <circle cx="19" cy="6" r="1.4" fill="#b66015" stroke="none" />
+                        </svg>
+                        <p>Ensemble ML &middot; XAI &middot; RL</p>
+                    </div>
+                    <div className="csv-upload-container">
+                        <br />
+                        <button type="submit">Predict Churn</button>
+                    </div>
+                </Link>
             </div>
 
             {showProfile && (

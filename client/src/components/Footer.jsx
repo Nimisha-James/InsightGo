@@ -4,7 +4,7 @@ import logo from '../assets/logo.jpg';
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-300 py-10">
+    <footer className="bg-gradient-to-b from-brown-950 to-brown-900 text-brown-200 py-10">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
           <div className="flex flex-col items-center md:items-start text-sm">
@@ -17,13 +17,13 @@ function Footer() {
           </div>
 
           <div className="space-x-8">
-            <Link to="/" className="text-gray-400 hover:text-white transition-colors duration-300">
+            <Link to="/" className="text-brown-300 hover:text-cream-100 transition-colors duration-300">
               About Us
             </Link>
-            <Link to="/contact" className="text-gray-400 hover:text-white transition-colors duration-300">
+            <Link to="/contact" className="text-brown-300 hover:text-cream-100 transition-colors duration-300">
               Contact
             </Link>
-            <Link to="/signup" className="text-gray-400 hover:text-white transition-colors duration-300">
+            <Link to="/signup" className="text-brown-300 hover:text-cream-100 transition-colors duration-300">
               Sign Up
             </Link>
           </div>
@@ -68,7 +68,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+        <div className="mt-8 border-t border-brown-800 pt-6 text-center text-brown-400 text-sm">
           <p>Designed by InsightGo Team</p>
         </div>
       </div>

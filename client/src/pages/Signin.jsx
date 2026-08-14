@@ -187,7 +187,7 @@ const Signin = () => {
     };
 
     return (
-        <div className="main-container">
+        <div className="signin-page">
         <div className="container">
             <div className="header">
                 <button

@@ -1,0 +1,69 @@
+/**
+ * InsightGo design tokens.
+ *
+ * One source of truth for the palette/typography every page CSS file in this
+ * app should use, so "the bakery theme" means the same six colors everywhere
+ * instead of each page inventing its own gradient and hex codes. Mirrors the
+ * brand.* colors added in tailwind.config.js for the components that use
+ * Tailwind utility classes instead of a dedicated .css file.
+ */
+:root {
+  /* Page background */
+  --bg-gradient: linear-gradient(to bottom, #f4d6d7, #ffe4c4);
+  --bg-gradient-soft: linear-gradient(to bottom, #fff9f3, #ffecd0);
+
+  /* Surfaces */
+  --surface: #fff0e1;
+  --surface-soft: #fffaf3;
+  --surface-white: #ffffff;
+  --surface-tint: #fbe3c6;
+
+  /* Borders */
+  --border: #b66015;
+  --border-soft: #e0c4a3;
+  --border-strong: #694e30;
+
+  /* Text */
+  --text-heading: #3f2501;
+  --text-body: #5b3d1d;
+  --text-muted: #7a5636;
+
+  /* Buttons */
+  --button-bg: #f2b060;
+  --button-bg-hover: #c98635;
+  --button-text: #1a1005;
+
+  /* Status */
+  --success-bg: #e3f3e1;
+  --success-text: #2c6b2f;
+  --error-bg: #fbe1e1;
+  --error-text: #a3312f;
+
+  /* Shape */
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Type */
+  --font-body: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Site-wide scrollbar (was previously a dead <style jsx> block in Navbar.jsx —
+   styled-jsx isn't wired into this Vite app, so it never actually applied). */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-tint);
+}
+::-webkit-scrollbar-thumb {
+  background: #c85a2e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a34923;
+}

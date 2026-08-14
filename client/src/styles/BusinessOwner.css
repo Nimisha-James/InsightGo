@@ -2,80 +2,46 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px;
-    background: linear-gradient(to bottom, #f4d6d7, #ffe4c4);
+    min-height: 100vh;
+    padding: 60px 80px 80px;
+    background: var(--bg-gradient);
 }
 
 .business-owner-header {
-    margin-top: -2px;
     display: flex;
     justify-content: space-between;
-    width: 100%;
     align-items: center;
-    margin-bottom: 55px;
-}
-
-
-.profile-option {
-    margin-top: -50px;
-    margin-right: 50px;
+    width: 100%;
+    margin-bottom: 45px;
 }
 
 .company-name {
-    text-align: center;
-    margin-right: 930px;
-    flex-grow: 1;
-    margin-top: -50px;
     font-size: 2.5rem;
     font-weight: bold;
-    color: #3f2501; /* The preferred color */
-    font-family: 'Arial', sans-serif; /* Change to your preferred font if necessary */
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* Optional shadow effect */
-    position: relative; /* Makes the container positionable */
-}
-
-.company-name-container {
-    background-color: #fff0e1; /* Light background color */
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: 2px solid #b66015; /* Border to match the overall theme */
-    display: inline-block;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-.company-name-container:hover {
-    background-color: #f9d5b6; /* Slightly change the background on hover */
-}
-
-
-.company-image {
-    margin-right: 10px;
-}
-
-.company-image img {
-    width: 100px;
-    height: auto;
-    margin-top: -20px;
+    color: var(--text-heading);
+    font-family: var(--font-body);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .business-owner-boxes {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
     width: 100%;
-    margin-top: 5px;
     align-items: stretch; /* Ensures all boxes have the same height */
 }
 
 .box {
-    background-color: #f0f0f0;
-    border: 3px solid #b66015;
+    background-color: var(--surface-soft);
+    border: 3px solid var(--border);
     padding: 20px;
     text-align: center;
-    width: 30%;
+    min-width: 220px;
+    flex: 1 1 220px;
     text-decoration: none;
-    color: #000;
-    border-radius: 10px;
+    color: var(--text-body);
+    border-radius: var(--radius);
     transition: background-color 0.3s;
     min-height: 300px; /* Ensures the boxes have the same minimum height */
     position: relative;
@@ -86,69 +52,68 @@
 }
 
 .box:hover {
-    background-color: #e0e0e0;
+    background-color: var(--surface);
 }
 
 .box-image {
     width: 100%;
     height: 210px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: var(--radius);
     margin-bottom: 25px;
 }
 
-.csv-upload-container {
+.box-icon-wrapper {
+    width: 100%;
+    height: 210px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: auto;
+    justify-content: center;
+    gap: 10px;
+    border-radius: var(--radius);
+    margin-bottom: 25px;
+    background: linear-gradient(to bottom, var(--surface-tint), #f9d5b6);
 }
 
-.csv-upload-container h3 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    color: #333;
+.box-icon-wrapper p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.csv-upload-container,
+.csv-upload-container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
 }
 
 .csv-upload-container input[type="file"] {
     margin-bottom: 15px;
 }
 
-.csv-upload-container button {
-    background-color: #f2b060;
-    color: rgb(5, 0, 0);
-    border: none;
-    padding: 10px 20px;
-    width: 200%;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-    align-self: center;
-}
-
-.csv-upload-container button:hover {
-    background-color: #c98635;
-}
-
-
+.csv-upload-container button,
 .csv-upload-container1 button {
-    background-color: #f2b060;
-    color: rgb(5, 0, 0);
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
     padding: 10px 20px;
     width: 100%;
     font-size: 1rem;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     transition: background-color 0.3s;
     margin-top: 15px;
     align-self: center;
 }
 
+.csv-upload-container button:hover,
 .csv-upload-container1 button:hover {
-    background-color: #c98635;
+    background-color: var(--button-bg-hover);
 }
 
 .csv-upload-container button:disabled {
@@ -156,15 +121,15 @@
     cursor: not-allowed;
 }
 
-/* Profile sidebar styles */
+/* Profile sidebar */
 .profile-sidebar {
     position: fixed;
     top: 0;
     right: 0;
     width: 300px;
     height: 100%;
-    background: linear-gradient(to bottom, #f4d6d7, #ffe4c4);
-    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    background: var(--bg-gradient);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     padding: 20px;
 }
@@ -176,17 +141,16 @@
 
 .sidebar-content button {
     margin-top: 20px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
 }
 
-
-.profile-icon {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 15px;
-    position: relative;
-    margin-right: 10px;
-    z-index: 1;
-    margin-top: -50px;
+.sidebar-content button:hover {
+    background-color: var(--button-bg-hover);
 }
 
 .profile-icon button {
@@ -197,25 +161,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;  /* Adjust size as necessary */
+    width: 50px;
     height: 50px;
-    border-radius: 50%; /* Circular shape */
-    border: 3px solid #3e1f03; /* Circular border */
+    border-radius: 50%;
+    border: 3px solid var(--text-heading);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .profile-icon button:hover {
-    background-color: #f0f0f0; /* Optional hover effect */
-    border-color: #666; /* Change border color on hover */
+    background-color: var(--surface);
+    border-color: var(--text-muted);
 }
 
 .profile-icon svg {
     width: 24px;
     height: 24px;
-    fill: #000000;
+    fill: var(--text-heading);
     transition: fill 0.3s ease;
 }
 
-.profile-icon svg:hover {
-    fill: #666;
+.profile-icon button:hover svg {
+    fill: var(--text-muted);
 }

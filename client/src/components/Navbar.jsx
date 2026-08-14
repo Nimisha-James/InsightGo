@@ -44,23 +44,6 @@ function Navbar() {
         <Link to="/contact" className="block px-4 py-2 text-sm text-brown-800 hover:bg-orange-300">Contact</Link>
         <Link to="/signup" className="block px-4 py-2 text-sm text-brown-800 hover:bg-orange-300">Sign Up</Link>
       </div>
-
-      <style jsx>{`
-        /* Custom scroll bar */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #f3e0cf;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #c85a2e;
-          border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: #a34923;
-        }
-      `}</style>
     </nav>
   );
 }

@@ -1,0 +1,301 @@
+/* Churn prediction pages — uses the same design tokens (theme.css) as every
+   other page, so this reads as one platform rather than a bolted-on second
+   app. */
+
+.churn-page {
+    min-height: 100vh;
+    padding: 60px 80px 80px;
+    background: var(--bg-gradient);
+    font-family: var(--font-body);
+}
+
+.churn-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.churn-header h2 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--text-heading);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.churn-header-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.churn-back-link {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-heading);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.churn-back-link:hover {
+    background-color: #f9d5b6;
+}
+
+.churn-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .churn-grid {
+        grid-template-columns: 1fr;
+    }
+    .churn-page {
+        padding: 40px 20px 60px;
+    }
+}
+
+.churn-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.churn-card {
+    background-color: var(--surface);
+    border: 3px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+}
+
+.churn-card h3 {
+    margin-top: 0;
+    color: var(--text-heading);
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--button-bg);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+}
+
+.churn-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.churn-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 520px) {
+    .churn-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.churn-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.churn-form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-body);
+    margin-bottom: 6px;
+}
+
+.churn-form-group input,
+.churn-form input {
+    padding: 10px 12px;
+    border: 2px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    background-color: var(--surface-soft);
+    transition: border-color 0.3s ease;
+}
+
+.churn-form-group input:focus,
+.churn-form input:focus {
+    outline: none;
+    border-color: var(--border);
+}
+
+.churn-form button,
+.churn-explain-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.3s;
+}
+
+.churn-form button:hover,
+.churn-explain-btn:hover {
+    background-color: var(--button-bg-hover);
+}
+
+.churn-form button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.churn-wrong-count {
+    margin-top: 16px;
+    padding: 10px 14px;
+    background-color: var(--surface-tint);
+    border-left: 4px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-body);
+    font-size: 0.9rem;
+}
+
+.churn-message {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+}
+
+.churn-message-success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.churn-message-error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+}
+
+.churn-encoding {
+    margin-bottom: 14px;
+}
+
+.churn-encoding strong {
+    color: var(--text-heading);
+}
+
+.churn-encoding ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+    color: var(--text-body);
+    font-size: 0.85rem;
+}
+
+/* --- Result page --- */
+
+.churn-result-card {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.churn-loading {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.churn-result-banner {
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    margin-top: 0;
+}
+
+.churn-result-risk {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border-left: 6px solid #c0392b;
+}
+
+.churn-result-safe {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-left: 6px solid #45a449;
+}
+
+.churn-explanation {
+    margin-top: 20px;
+}
+
+.churn-rewards {
+    background-color: var(--surface-tint);
+    border-left: 4px solid var(--border);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    color: var(--text-body);
+}
+
+.churn-shap-list h4 {
+    color: var(--text-heading);
+    margin-bottom: 4px;
+}
+
+.churn-shap-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+}
+
+.churn-shap-list li {
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.churn-risk-up {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+}
+
+.churn-risk-down {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.churn-plots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.churn-plots .churn-plot-container {
+    max-width: 480px;
+    width: 100%;
+}
+
+.churn-plot-container {
+    background-color: var(--surface-soft);
+    border: 2px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+
+.churn-plot-container h4 {
+    color: var(--text-heading);
+    margin-top: 0;
+}
+
+.churn-plot-container img {
+    max-width: 100%;
+    border-radius: 6px;
+}

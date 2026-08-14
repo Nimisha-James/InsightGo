@@ -1,108 +1,123 @@
 .customer-view-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #f4d6d7, #ffe4c4);
-    display: flex;
-    flex-direction: column; /* Stack form and results vertically */
-    align-items: center;
-    min-height: 100vh; /* Ensures full height to center vertically */
-}
-
-form {
+    padding: 60px 20px;
+    font-family: var(--font-body);
+    background: var(--bg-gradient);
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px; /* Ensures a max width for the form */
-    margin-bottom: 20px; /* Adds spacing between the form and the results */
+    min-height: 100vh;
 }
 
-h2 {
+.customer-view-container h2 {
     text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-heading);
+}
+
+.customer-view-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--surface-soft);
+    border: 2px solid var(--border);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
     margin-bottom: 20px;
 }
 
-label {
-    margin: 10px 0;
+.customer-view-container label {
+    display: block;
+    margin: 10px 0 4px;
     font-weight: bold;
+    color: var(--text-body);
 }
 
-input[type="text"], input[type="number"] {
+.customer-view-container input[type="text"],
+.customer-view-container input[type="number"] {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%; /* Makes all input fields the same width */
-    max-width: 400px; /* Ensures consistency for all input fields */
-    margin-left: 10px;
-}
-
-button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%; /* Ensures the button is the same width as input fields */
-    max-width: 400px; /* Matches the input field width */
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.results-container {
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
     width: 100%;
-    max-width: 500px; /* Maximum width for the results container */
-    margin-top: 30px; /* Space between the form and the search results */
-    padding: 20px;
+    max-width: 400px;
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Ensures the text in the container is left-aligned */
 }
 
-ul {
+.customer-view-container input:focus {
+    outline: none;
+    border-color: var(--border);
+}
+
+.customer-view-container button {
+    padding: 10px 15px;
+    margin-top: 14px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.customer-view-container button:hover {
+    background-color: var(--button-bg-hover);
+}
+
+.customer-view-container .results-container {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: var(--surface-soft);
+    border: 2px solid var(--border-soft);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+.customer-view-container ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
-li {
-    background: #f9f9f9;
+.customer-view-container li {
+    background: var(--surface);
     padding: 15px;
     margin: 10px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Ensures each result is left-aligned */
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    text-align: left;
 }
 
-h3 {
+.customer-view-container h3 {
     margin: 0;
-    color: #333;
+    color: var(--text-heading);
 }
 
-p {
+.customer-view-container p {
     margin: 5px 0;
+    color: var(--text-body);
 }
 
-.products {
+.customer-view-container .products {
     margin-top: 10px;
-    padding: 5px;
-    border-left: 3px solid #007BFF;
-    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-left: 3px solid var(--border);
+    background-color: var(--surface);
 }
 
-.products ul {
+.customer-view-container .products ul {
     padding-left: 15px;
 }
 
-.error-message {
-    color: red;
+.customer-view-container .error-message {
+    color: var(--error-text);
     margin-top: 10px;
     text-align: center;
 }

@@ -11,6 +11,8 @@ import Visualization from './pages/Visualization';
 import RecentVisualization from './pages/RecentVisualization';
 import CustomerView from './pages/CustomerView';
 import ThankYou from './pages/ThankYouReview';
+import ChurnPredict from './pages/ChurnPredict';
+import ChurnResult from './pages/ChurnResult';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
                 <Route path="/business-owner/:id/recent-visualization" element={<RecentVisualization />} />
                 <Route path="/business-owner/:id/customer-view" element={<CustomerView />} />
                 <Route path="/business-owner/:id/thank-you-review" element={<ThankYou />} />
+                <Route path="/business-owner/:id/churn" element={<ChurnPredict />} />
+                <Route path="/business-owner/:id/churn/result" element={<ChurnResult />} />
             </Routes>
             <Footer />
         </div>

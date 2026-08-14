@@ -29,12 +29,9 @@ const reviews = [
 
 const Review = () => {
   return (
-    <div
-      className="min-h-screen flex items-center justify-center relative py-16 px-6"
-      style={{ background: 'linear-gradient(to bottom, #ffe5d9, #fff7e6)' }}
-    >
+    <div className="min-h-screen flex items-center justify-center relative py-16 px-6 bg-gradient-to-b from-cream-300 to-cream-100">
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-5xl font-bold text-gray-900 text-center mb-12">
+        <h2 className="text-5xl font-bold text-brown-900 text-center mb-12">
           What Our Clients Say
         </h2>
 
@@ -48,17 +45,17 @@ const Review = () => {
                 <img
                   src={review.avatar}
                   alt={`${review.name}'s avatar`}
-                  className="w-16 h-16 rounded-full mr-4 border-4 border-[#f4a261] shadow-md"
+                  className="w-16 h-16 rounded-full mr-4 border-4 border-brown-300 shadow-md"
                 />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-brown-900">
                     {review.name}
                   </h3>
-                  <p className="text-gray-600">{review.business}</p>
+                  <p className="text-brown-700">{review.business}</p>
                 </div>
               </div>
 
-              <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+              <p className="text-brown-800 text-lg mb-6 leading-relaxed">
                 "{review.review}"
               </p>
 

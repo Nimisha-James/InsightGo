@@ -101,7 +101,7 @@ function App() {
   }
 
   return (
-    <div className="main-container">
+    <div className="form-page">
       <div className="form-container">
         <h1>Help Us Serve You Better <br /> - Brown Bakery</h1>
         <form onSubmit={handleSubmit}>

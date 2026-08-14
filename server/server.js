@@ -10,6 +10,8 @@ const businessRoutes = require('./routes/businessRoutes');
 const importRoutes = require('./routes/importdataRoutes');
 const reviewRoutes = require('./routes/formRoutes');
 const searchRoutes = require('./routes/searchRoutes');
+const churnRoutes = require('./routes/churnRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 
 /* Load environment variables from .env file */
 dotenv.config();
@@ -45,6 +47,8 @@ app.use('/customer', customerRoutes);
 app.use('/upload-csv', importRoutes);
 app.use('/submit-form', reviewRoutes);
 app.use('/search', searchRoutes);
+app.use('/churn', churnRoutes);
+app.use('/analytics', analyticsRoutes);
 
 //Connect to MongoDB
 connect();
