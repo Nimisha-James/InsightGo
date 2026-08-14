@@ -8,6 +8,24 @@ const DEFAULT_TAB_NAME = 'CurrentSalesData';
 const DEFAULT_MAX_ROWS = 50000; // keep individual imports well under Sheets' cell/quota limits
 const CHUNK_SIZE = 2000; // rows per Sheets API write, to keep each request small
 
+// Matches D/M/YY, DD/MM/YYYY, etc. CSVs like this project's sample sales_data.csv
+// write dates as "13/04/20" (day-first). That's ambiguous to both Sheets and
+// Looker Studio's auto date-parser — Looker Studio silently mis-parsed these
+// into garbage sequential dates, breaking every time-series chart. Normalizing
+// to ISO (YYYY-MM-DD) before the value ever reaches Sheets removes the
+// ambiguity for every downstream reader, not just Looker Studio.
+const DATE_PATTERN = /^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/;
+
+function normalizeCellValue(value) {
+  if (typeof value !== 'string') return value;
+  const match = value.match(DATE_PATTERN);
+  if (!match) return value;
+  let [, day, month, year] = match;
+  if (Number(month) > 12) return value; // not actually day-first if this fails too; leave as-is
+  if (year.length === 2) year = `20${year}`;
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -56,10 +74,53 @@ async function syncSalesDataToSheet(rows) {
   const header = Object.keys(rowsToSync[0]).filter((key) => !INTERNAL_FIELDS.has(key));
   const values = [
     header,
-    ...rowsToSync.map((row) => header.map((key) => (row[key] === undefined || row[key] === null ? '' : String(row[key])))),
+    ...rowsToSync.map((row) =>
+      header.map((key) =>
+        row[key] === undefined || row[key] === null ? '' : normalizeCellValue(String(row[key]))
+      )
+    ),
   ];
 
   try {
+    // A brand-new Sheet tab has a fixed default grid (commonly 1000-2000 rows
+    // x 26 columns) — values.update/clear can't write past that boundary, it
+    // doesn't auto-expand. Look up the tab and grow its grid first if this
+    // batch needs more room than it currently has.
+    const meta = await sheets.spreadsheets.get({ spreadsheetId });
+    const targetSheet = meta.data.sheets.find((s) => s.properties.title === tabName);
+    if (!targetSheet) {
+      const available = meta.data.sheets.map((s) => s.properties.title).join(', ');
+      throw new Error(
+        `No tab named "${tabName}" in this spreadsheet. Available tabs: ${available || '(none)'}. ` +
+          `Either rename a tab to "${tabName}" or set GOOGLE_SHEET_TAB_NAME to match an existing one.`
+      );
+    }
+
+    const grid = targetSheet.properties.gridProperties || {};
+    const neededRows = values.length + 10; // small buffer
+    const neededCols = header.length + 2;
+    if ((grid.rowCount || 0) < neededRows || (grid.columnCount || 0) < neededCols) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        requestBody: {
+          requests: [
+            {
+              updateSheetProperties: {
+                properties: {
+                  sheetId: targetSheet.properties.sheetId,
+                  gridProperties: {
+                    rowCount: Math.max(neededRows, grid.rowCount || 0),
+                    columnCount: Math.max(neededCols, grid.columnCount || 0),
+                  },
+                },
+                fields: 'gridProperties.rowCount,gridProperties.columnCount',
+              },
+            },
+          ],
+        },
+      });
+    }
+
     // Wipe the tab first so this fully replaces the previous "current" snapshot.
     await sheets.spreadsheets.values.clear({
       spreadsheetId,

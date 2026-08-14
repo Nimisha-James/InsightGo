@@ -9,12 +9,12 @@ import axios from 'axios';
 
 function App() {
   const items = [
-    { value: 'Cake', label: 'Cake' },
-    { value: 'Pastries', label: 'Pastries' },
-    { value: 'Cookies', label: 'Cookies' },
-    { value: 'Doughnuts', label: 'Doughnuts' },
-    { value: 'Cream rolls', label: 'Cream rolls' },
-    { value: 'Bread', label: 'Bread' },
+    { value: 'Mobile Phone', label: 'Mobile Phone' },
+    { value: 'Laptop', label: 'Laptop' },
+    { value: 'Refrigerator', label: 'Refrigerator' },
+    { value: 'Air Conditioner', label: 'Air Conditioner' },
+    { value: 'Washing Machine', label: 'Washing Machine' },
+    { value: 'Microwave', label: 'Microwave' },
   ];
 
   const [formValues, setFormValues] = useState({
@@ -105,21 +105,21 @@ function App() {
       <div className="form-container">
         <h1>Help Us Serve You Better <br /> - Brown Bakery</h1>
         <form onSubmit={handleSubmit}>
-          <TextInput 
-            label="Name" 
-            name="name" 
-            placeholder="Enter your name" 
-            required={true} 
-            value={formValues.name} 
+          <TextInput
+            label="Name"
+            name="name"
+            placeholder="Enter your name"
+            required={true}
+            value={formValues.name}
             onChange={handleInputChange}
             error={errors.name}
           />
-          <TextInput 
-            label="Contact" 
-            name="contact" 
-            placeholder="Enter Contact no." 
-            required={true} 
-            value={formValues.contact} 
+          <TextInput
+            label="Contact"
+            name="contact"
+            placeholder="Enter Contact no."
+            required={true}
+            value={formValues.contact}
             onChange={handleInputChange}
             error={errors.contact}
           />
@@ -135,13 +135,13 @@ function App() {
           />
           <div>
             <label>Rate Us:</label>
-            <Rating 
-              rating={formValues.rating} 
+            <Rating
+              rating={formValues.rating}
               onChange={(rating) => handleInputChange('rating', rating)}
               error={errors.rating}
             />
           </div>
-          <TextReview 
+          <TextReview
             value={formValues.review}
             onChange={(review) => handleInputChange('review', review)}
           />
