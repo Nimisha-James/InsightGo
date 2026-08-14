@@ -2,10 +2,14 @@ const { getSheetsClient } = require('../config/googleSheets');
 
 // Fields we tag onto rows internally (see importdataController.js) that
 // shouldn't show up as spreadsheet columns for the business owner.
-const INTERNAL_FIELDS = new Set(['_id', '__v', '_importBatchId']);
+const INTERNAL_FIELDS = new Set(['_id', '__v', '_importBatchId', '_importedAt']);
 
 const DEFAULT_TAB_NAME = 'CurrentSalesData';
-const DEFAULT_MAX_ROWS = 50000; // keep individual imports well under Sheets' cell/quota limits
+// Google Sheets supports ~10M cells per spreadsheet. This project's sample
+// sales_data.csv is ~17 columns, so 200,000 rows is still well under 4M
+// cells — plenty of headroom while still guarding against a truly enormous
+// one-off import blowing the quota.
+const DEFAULT_MAX_ROWS = 200000;
 const CHUNK_SIZE = 2000; // rows per Sheets API write, to keep each request small
 
 // Matches D/M/YY, DD/MM/YYYY, etc. CSVs like this project's sample sales_data.csv
@@ -132,7 +136,13 @@ async function syncSalesDataToSheet(rows) {
       await sheets.spreadsheets.values.update({
         spreadsheetId,
         range: `${tabName}!A${i + 1}`,
-        valueInputOption: 'RAW',
+        // USER_ENTERED (not RAW): tells Sheets to parse each value the way
+        // manual typing would — "3344.69" becomes a real number cell,
+        // "2023-04-13" becomes a real date cell. RAW stores everything as
+        // literal text instead, which made Looker Studio auto-detect Sales/
+        // Profit/Discount as Text fields and silently default their charts
+        // to Count Distinct instead of Sum.
+        valueInputOption: 'USER_ENTERED',
         requestBody: { values: chunk },
       });
       if (i + CHUNK_SIZE < values.length) {
