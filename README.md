@@ -87,8 +87,8 @@ prediction all land in one place.
 
 1. From the business platform's landing page, sign up/sign in as a
    **Business**.
-2. The business-owner dashboard now has four options instead of three:
-   Previous Report, Import Data, Customer Reviews, and **Predict Churn**.
+2. The business-owner dashboard has three options: Import Data, Customer
+   Reviews, and **Predict Churn**.
 3. **Predict Churn** opens the churn form (13 customer features). Submitting
    it saves the record and shows the LightGBM model's prediction, and — if the
    customer is flagged as likely to churn — an "Explain Why" panel with the
@@ -102,15 +102,14 @@ prediction all land in one place.
    kicks off `ml-service/retrain_with_rl.py`, which runs the Q-learning loop
    and retrains the churn/rewards models on the accumulated feedback — exactly
    as in the original standalone churn app.
-5. **Previous Report** and **Import Data → Current Sales Report** embed Looker
-   Studio dashboards. Until one is connected, both show a themed "not
-   connected yet" placeholder instead of a broken iframe — see
+5. **Import Data → Current Sales Report** embeds a Looker Studio dashboard.
+   Until one is connected, it shows a themed "not connected yet" placeholder
+   instead of a broken iframe — see
    [Connecting Looker Studio](#connecting-looker-studio) below.
 
 ## Connecting Looker Studio
 
-`Visualization.jsx` ("Previous Report") and `RecentVisualization.jsx`
-("Current Sales Report") both render through one shared component,
+`RecentVisualization.jsx` ("Current Sales Report") renders through
 [`LookerReport.jsx`](client/src/components/LookerReport.jsx), which reads its
 embed URL from an env var instead of a hardcoded iframe `src`.
 
@@ -193,20 +192,6 @@ happened. You can also trigger a resync without a new upload:
 From here on, every CSV import automatically refreshes the Sheet, and the
 report shows the latest data next time it's opened/refreshed — no more manual
 steps needed.
-
-### One-time setup: Previous Report (premade)
-
-This one's simpler since it's meant to be a static, pre-built snapshot, not
-live data:
-
-1. Build any report in Looker Studio (against a one-off CSV upload to Sheets,
-   a sample dataset, whatever you want it to show).
-2. **File → Embed report** → enable embedding → copy the URL.
-3. Set it in `client/.env`:
-   ```
-   VITE_LOOKER_STUDIO_PREVIOUS_REPORT_URL=<embed url>
-   ```
-4. Share it as "Anyone with the link can view" too, same reason as above.
 
 ## Getting started
 

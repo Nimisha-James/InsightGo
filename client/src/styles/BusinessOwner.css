@@ -24,26 +24,30 @@
 }
 
 .business-owner-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
     width: 100%;
-    align-items: stretch; /* Ensures all boxes have the same height */
+    max-width: 1080px;
+}
+
+@media (max-width: 820px) {
+    .business-owner-boxes {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
 }
 
 .box {
     background-color: var(--surface-soft);
     border: 3px solid var(--border);
-    padding: 20px;
+    padding: 24px;
     text-align: center;
-    min-width: 220px;
-    flex: 1 1 220px;
     text-decoration: none;
     color: var(--text-body);
     border-radius: var(--radius);
-    transition: background-color 0.3s;
-    min-height: 300px; /* Ensures the boxes have the same minimum height */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 320px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -53,6 +57,8 @@
 
 .box:hover {
     background-color: var(--surface);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
 }
 
 .box-image {
